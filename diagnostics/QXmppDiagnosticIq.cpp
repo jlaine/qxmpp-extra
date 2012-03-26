@@ -26,83 +26,83 @@
 
 const char* ns_diagnostics = "http://wifirst.net/protocol/diagnostics";
 
-QList<Interface> DiagnosticsIq::interfaces() const
+QList<Interface> QXmppDiagnosticIq::interfaces() const
 {
     return m_interfaces;
 }
 
-void DiagnosticsIq::setInterfaces(QList<Interface> &interfaces)
+void QXmppDiagnosticIq::setInterfaces(QList<Interface> &interfaces)
 {
     m_interfaces = interfaces;
 }
 
-QList<QHostAddress> DiagnosticsIq::nameServers() const
+QList<QHostAddress> QXmppDiagnosticIq::nameServers() const
 {
     return m_nameServers;
 }
 
-void DiagnosticsIq::setNameServers(const QList<QHostAddress> &nameServers)
+void QXmppDiagnosticIq::setNameServers(const QList<QHostAddress> &nameServers)
 {
     m_nameServers = nameServers;
 }
 
-QList<QHostInfo> DiagnosticsIq::lookups() const
+QList<QHostInfo> QXmppDiagnosticIq::lookups() const
 {
     return m_lookups;
 }
 
-void DiagnosticsIq::setLookups(const QList<QHostInfo> &lookups)
+void QXmppDiagnosticIq::setLookups(const QList<QHostInfo> &lookups)
 {
     m_lookups = lookups;
 }
 
-QList<Ping> DiagnosticsIq::pings() const
+QList<Ping> QXmppDiagnosticIq::pings() const
 {
     return m_pings;
 }
 
-void DiagnosticsIq::setPings(const QList<Ping> &pings)
+void QXmppDiagnosticIq::setPings(const QList<Ping> &pings)
 {
     m_pings = pings;
 }
 
-QList<Software> DiagnosticsIq::softwares() const
+QList<Software> QXmppDiagnosticIq::softwares() const
 {
     return m_softwares;
 }
 
-void DiagnosticsIq::setSoftwares(const QList<Software> &softwares)
+void QXmppDiagnosticIq::setSoftwares(const QList<Software> &softwares)
 {
     m_softwares = softwares;
 }
 
-QList<Traceroute> DiagnosticsIq::traceroutes() const
+QList<Traceroute> QXmppDiagnosticIq::traceroutes() const
 {
     return m_traceroutes;
 }
 
-void DiagnosticsIq::setTraceroutes(const QList<Traceroute> &traceroutes)
+void QXmppDiagnosticIq::setTraceroutes(const QList<Traceroute> &traceroutes)
 {
     m_traceroutes = traceroutes;
 }
 
-QList<Transfer> DiagnosticsIq::transfers() const
+QList<Transfer> QXmppDiagnosticIq::transfers() const
 {
     return m_transfers;
 }
 
-void DiagnosticsIq::setTransfers(const QList<Transfer> &transfers)
+void QXmppDiagnosticIq::setTransfers(const QList<Transfer> &transfers)
 {
     m_transfers = transfers;
 }
 
-bool DiagnosticsIq::isDiagnosticsIq(const QDomElement &element)
+bool QXmppDiagnosticIq::isDiagnosticIq(const QDomElement &element)
 {
     QDomElement queryElement = element.firstChildElement("query");
     return (queryElement.namespaceURI() == ns_diagnostics);
 }
 
-void DiagnosticsIq::parseElementFromChild(const QDomElement &element)
+void QXmppDiagnosticIq::parseElementFromChild(const QDomElement &element)
 {
     QDomElement queryElement = element.firstChildElement("query");
     QDomElement child = queryElement.firstChildElement();
@@ -158,7 +158,7 @@ void DiagnosticsIq::parseElementFromChild(const QDomElement &element)
     }
 }
 
-void DiagnosticsIq::toXmlElementFromChild(QXmlStreamWriter *writer) const
+void QXmppDiagnosticIq::toXmlElementFromChild(QXmlStreamWriter *writer) const
 {
     writer->writeStartElement("query");
     writer->writeAttribute("xmlns", ns_diagnostics);

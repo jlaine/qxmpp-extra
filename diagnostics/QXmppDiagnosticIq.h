@@ -32,7 +32,7 @@
 
 extern const char* ns_diagnostics;
 
-class DiagnosticsIq : public QXmppIq
+class QXmppDiagnosticIq : public QXmppIq
 {
 public:
     QList<Interface> interfaces() const;
@@ -56,7 +56,7 @@ public:
     QList<Transfer> transfers() const;
     void setTransfers(const QList<Transfer> &transfer);
 
-    static bool isDiagnosticsIq(const QDomElement &element);
+    static bool isDiagnosticIq(const QDomElement &element);
 
 protected:
     void parseElementFromChild(const QDomElement &element);
