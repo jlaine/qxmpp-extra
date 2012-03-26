@@ -1,6 +1,6 @@
 HEADERS += \
     diagnostics/interface.h \
-    diagnostics/iq.h \
+    diagnostics/QXmppDiagnosticIq.h \
     diagnostics/network.h \
     diagnostics/software.h \
     diagnostics/transfer.h \
@@ -8,7 +8,7 @@ HEADERS += \
 
 SOURCES += \
     diagnostics/interface.cpp \
-    diagnostics/iq.cpp \
+    diagnostics/QXmppDiagnosticIq.cpp \
     diagnostics/network.cpp \
     diagnostics/software.cpp \
     diagnostics/transfer.cpp \
