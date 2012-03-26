@@ -22,7 +22,7 @@
 #include <QDomElement>
 #include <QNetworkInterface>
 
-#include "iq.h"
+#include "QXmppDiagnosticIq.h"
 
 const char* ns_diagnostics = "http://wifirst.net/protocol/diagnostics";
 

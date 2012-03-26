@@ -26,7 +26,7 @@ endif(WIN32)
 
 set(qxmpp-diagnostics_SOURCES
     interface.cpp
-    iq.cpp
+    QXmppDiagnosticIq.cpp
     network.cpp
     software.cpp
     transfer.cpp

@@ -1,3 +1,6 @@
+cmake_minimum_required(VERSION 2.6)
+find_package(Qt4 REQUIRED)
+
 # Needed for plugin support
 add_definitions(-DQT_STATICPLUGIN)
 if(UNIX)
