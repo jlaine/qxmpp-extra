@@ -311,6 +311,7 @@ bool QXmppShareManager::handleStanza(const QDomElement &element)
                         break;
                     }
                 }
+                emit shareGetIqReceived(getIq);
             }
             return true;
         }

@@ -101,6 +101,7 @@ public:
     /// \endcond
 
 signals:
+    void shareGetIqReceived(const QXmppShareGetIq &iq);
     void shareSearchIqReceived(const QXmppShareSearchIq &iq);
 
 private slots:
