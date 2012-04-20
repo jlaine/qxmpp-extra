@@ -279,7 +279,7 @@ void QXmppShareItem::parse(const QDomElement &element)
     else
         m_type = FileItem;
 
-    m_date = datetimeFromString(element.attribute("date"));
+    m_date = QXmppUtils::datetimeFromString(element.attribute("date"));
     m_hash = QByteArray::fromHex(element.attribute("hash").toAscii());
     m_name = element.attribute("name");
     m_popularity = element.attribute("popularity").toLongLong();
@@ -313,7 +313,7 @@ void QXmppShareItem::toXml(QXmlStreamWriter *writer) const
         writer->writeStartElement("collection");
     else
         writer->writeStartElement("file");
-    helperToXmlAddAttribute(writer, "date", datetimeToString(m_date));
+    helperToXmlAddAttribute(writer, "date", QXmppUtils::datetimeToString(m_date));
     helperToXmlAddAttribute(writer, "name", m_name);
     helperToXmlAddAttribute(writer, "hash", m_hash.toHex());
     if (m_popularity)
@@ -330,7 +330,7 @@ void QXmppShareItem::toXml(QXmlStreamWriter *writer) const
 QXmppShareSearchIq::QXmppShareSearchIq()
     : m_collection(QXmppShareItem::CollectionItem), m_depth(0), m_hash(0)
 {
-    m_tag = generateStanzaHash();
+    m_tag = QXmppUtils::generateStanzaHash();
 }
 
 QXmppShareItem &QXmppShareSearchIq::collection()

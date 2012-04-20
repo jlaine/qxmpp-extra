@@ -364,7 +364,7 @@ void QXmppShareManager::getFinished(const QXmppShareGetIq &iq, const QXmppShareI
 
     // FIXME: for some reason, random number generation in thread is broken
     if (responseIq.type() != QXmppIq::Error)
-        responseIq.setSid(generateStanzaHash());
+        responseIq.setSid(QXmppUtils::generateStanzaHash());
     client()->sendPacket(responseIq);
 
     // send file
