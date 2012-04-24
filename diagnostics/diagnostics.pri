@@ -20,7 +20,7 @@ android {
     SOURCES += diagnostics/wireless_stub.cpp
 } else:mac {
     SOURCES += diagnostics/wireless_mac.mm
-    LIBS += -framework CoreWLAN
+    LIBS += -framework CoreWLAN -framework AppKit
 } else:symbian {
     SOURCES += diagnostics/wireless_stub.cpp
 } else:unix {
