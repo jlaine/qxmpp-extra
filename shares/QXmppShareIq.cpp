@@ -425,7 +425,7 @@ void QXmppShareSearchIq::toXmlElementFromChild(QXmlStreamWriter *writer) const
 {
     writer->writeStartElement("query");
     writer->writeAttribute("xmlns", ns_shares_search);
-    if (!node.isEmpty())
+    if (!m_node.isEmpty())
         writer->writeAttribute("node", m_node);
     if (m_depth > 0)
         writer->writeAttribute("depth", QString::number(m_depth));
@@ -434,7 +434,7 @@ void QXmppShareSearchIq::toXmlElementFromChild(QXmlStreamWriter *writer) const
     if (!m_search.isEmpty())
         writer->writeAttribute("search", m_search);
     if (!m_tag.isEmpty())
-        writer-writeAttribute("tag", m_tag);
+        writer->writeAttribute("tag", m_tag);
 
     // compress query content
     if (m_collection.size() || !m_collection.locations().isEmpty())
