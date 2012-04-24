@@ -9,6 +9,7 @@ DEFINES += QT_STATICPLUGIN
 DEFINES += $$QXMPP_INTERNAL_DEFINES
 INCLUDEPATH += $$QXMPP_INCLUDEPATH ../3rdparty/qdjango/src/db
 LIBS += $QXMPP_LIBS -L../3rdparty/qdjango/src/db -lqdjango-db
+win32: DESTDIR = $$OUT_PWD
 
 include(diagnostics/diagnostics.pri)
 include(shares/shares.pri)
