@@ -5,13 +5,16 @@ QT -= gui
 QT += network xml
 
 TEMPLATE = lib
-CONFIG += staticlib
+CONFIG += shared
 DEFINES += $$QXMPP_INTERNAL_DEFINES
 INCLUDEPATH += $$QDJANGO_INCLUDEPATH $$QXMPP_INCLUDEPATH
 LIBS += \
     -L../3rdparty/qdjango/src/db $$QDJANGO_DB_LIBS \
     -L../3rdparty/qxmpp/src $$QXMPP_LIBS
-win32: DESTDIR = $$OUT_PWD
+win32 {
+    LIBS += -lws2_32
+    DESTDIR = $$OUT_PWD
+}
 
 include(diagnostics/diagnostics.pri)
 include(shares/shares.pri)
