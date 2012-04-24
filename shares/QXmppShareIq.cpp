@@ -66,8 +66,8 @@ void QXmppShareLocation::parse(const QDomElement &element)
 void QXmppShareLocation::toXml(QXmlStreamWriter *writer) const
 {
     writer->writeStartElement("location");
-    helperToXmlAddAttribute(writer, "jid", m_jid);
-    helperToXmlAddAttribute(writer, "node", m_node);
+    writer->writeAttribute("jid", m_jid);
+    writer->writeAttribute("node", m_node);
     writer->writeEndElement();
 }
 
@@ -313,13 +313,16 @@ void QXmppShareItem::toXml(QXmlStreamWriter *writer) const
         writer->writeStartElement("collection");
     else
         writer->writeStartElement("file");
-    helperToXmlAddAttribute(writer, "date", QXmppUtils::datetimeToString(m_date));
-    helperToXmlAddAttribute(writer, "name", m_name);
-    helperToXmlAddAttribute(writer, "hash", m_hash.toHex());
+    if (m_date.isValid())
+        writer->writeAttribute("date", QXmppUtils::datetimeToString(m_date));
+    if (!m_name.isEmpty())
+        writer->writeAttribute("name", m_name);
+    if (!m_hash.isEmpty())
+        writer->writeAttribute("hash", m_hash.toHex());
     if (m_popularity)
-        helperToXmlAddAttribute(writer, "popularity", QString::number(m_popularity));
+        writer->writeAttribute("popularity", QString::number(m_popularity));
     if (m_size)
-        helperToXmlAddAttribute(writer, "size", QString::number(m_size));
+        writer->writeAttribute("size", QString::number(m_size));
     foreach (const QXmppShareItem *item, m_children)
         item->toXml(writer);
     foreach (const QXmppShareLocation &location, locations())
@@ -422,13 +425,16 @@ void QXmppShareSearchIq::toXmlElementFromChild(QXmlStreamWriter *writer) const
 {
     writer->writeStartElement("query");
     writer->writeAttribute("xmlns", ns_shares_search);
-    helperToXmlAddAttribute(writer, "node", m_node);
+    if (!node.isEmpty())
+        writer->writeAttribute("node", m_node);
     if (m_depth > 0)
-        helperToXmlAddAttribute(writer, "depth", QString::number(m_depth));
+        writer->writeAttribute("depth", QString::number(m_depth));
     if (m_hash)
-        helperToXmlAddAttribute(writer, "hash", "1");
-    helperToXmlAddAttribute(writer, "search", m_search);
-    helperToXmlAddAttribute(writer, "tag", m_tag);
+        writer->writeAttribute("hash", "1");
+    if (!m_search.isEmpty())
+        writer->writeAttribute("search", m_search);
+    if (!m_tag.isEmpty())
+        writer-writeAttribute("tag", m_tag);
 
     // compress query content
     if (m_collection.size() || !m_collection.locations().isEmpty())
@@ -478,8 +484,8 @@ void QXmppShareGetIq::toXmlElementFromChild(QXmlStreamWriter *writer) const
 {
     writer->writeStartElement("query");
     writer->writeAttribute("xmlns", ns_shares_get);
-    helperToXmlAddAttribute(writer, "node", m_node);
-    helperToXmlAddAttribute(writer, "sid", m_sid);
+    writer->writeAttribute("node", m_node);
+    writer->writeAttribute("sid", m_sid);
     writer->writeEndElement();
 }
 
