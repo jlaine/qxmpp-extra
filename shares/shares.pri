@@ -1,8 +1,5 @@
 QT += sql
 
-INCLUDEPATH += ../../qdjango/src/db
-LIBS += -L../qdjango/src/db -lqdjango-db
-
 HEADERS += \
     shares/QXmppShareDatabase.h \
     shares/QXmppShareDatabase_p.h \
