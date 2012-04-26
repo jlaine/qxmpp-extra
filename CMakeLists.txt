@@ -47,4 +47,4 @@ set(MOC_HEADERS
 
 qt4_wrap_cpp(MOC_SOURCES ${MOC_HEADERS})
 add_library(qxmpp-extra STATIC ${SOURCES} ${MOC_SOURCES})
-target_link_libraries(qxmpp-extra ${QT_LIBRARIES} ${WLAN_LIBRARIES})
+target_link_libraries(qxmpp-extra ${QDJANGO_LIBRARIES} ${QXMPP_LIBRARIES} ${QT_LIBRARIES} ${WLAN_LIBRARIES})
