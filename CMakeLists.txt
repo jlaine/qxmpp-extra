@@ -11,6 +11,12 @@ if(UNIX AND NOT APPLE AND NOT QXMPP_DONT_USE_QTDBUS)
 endif()
 include(${QT_USE_FILE})
 
+if(UNIX)
+  if(NOT APPLE)
+    add_definitions(-fPIC)
+  endif(NOT APPLE)
+endif(UNIX)
+
 # Wireless
 find_library(COREWLAN_LIBRARY NAMES CoreWLAN)
 if(COREWLAN_LIBRARY)
