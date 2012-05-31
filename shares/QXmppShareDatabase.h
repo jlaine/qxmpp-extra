@@ -90,8 +90,8 @@ class File : public QDjangoModel
     Q_PROPERTY(qint64 popularity READ popularity WRITE setPopularity)
     Q_PROPERTY(qint64 size READ size WRITE setSize)
 
-    Q_CLASSINFO("path", "primary_key=1")
-    Q_CLASSINFO("hash", "max_length=16")
+    Q_CLASSINFO("path", "primary_key=true")
+    Q_CLASSINFO("hash", "max_length=16 null=true")
 
 public:
     File(QObject *parent = 0);

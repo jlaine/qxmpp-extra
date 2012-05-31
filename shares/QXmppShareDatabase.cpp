@@ -37,7 +37,7 @@
 
 Q_DECLARE_METATYPE(QXmppShareSearchIq)
 
-#define FILE_SCHEMA 1
+#define FILE_SCHEMA 2
 #define SEARCH_MAX_TIME 5000
 
 #define INDEX_INTERVAL (30 * 60 * 1000) // 30mn
