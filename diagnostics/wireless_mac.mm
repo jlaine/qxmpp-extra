@@ -89,7 +89,7 @@ QList<WirelessNetwork> WirelessInterface::availableNetworks()
 #ifdef USE_COREWLAN
     NSAutoreleasePool *autoreleasepool = [[NSAutoreleasePool alloc] init];
 
-    CWInterface *currentInterface = [CWInterface interfaceWithName:qstringToNSString(d->interfaceName)];
+    CWInterface *currentInterface = [CWInterface interfaceWithName:(NSString*)qstringToNSString(d->interfaceName)];
     NSError *err = nil;
     NSDictionary *parametersDict = nil;
     NSArray* apArray = [NSMutableArray arrayWithArray:[currentInterface scanForNetworksWithParameters:parametersDict error:&err]];
@@ -119,7 +119,7 @@ WirelessNetwork WirelessInterface::currentNetwork()
 #ifdef USE_COREWLAN
     NSAutoreleasePool *autoreleasepool = [[NSAutoreleasePool alloc] init];
 
-    CWInterface *currentInterface = [CWInterface interfaceWithName:qstringToNSString(d->interfaceName)];
+    CWInterface *currentInterface = [CWInterface interfaceWithName:(NSString*)qstringToNSString(d->interfaceName)];
     network.setCurrent(true);
     network.setCinr(nsnumberToInt([currentInterface noise]));
     network.setRssi(nsnumberToInt([currentInterface rssi]));
@@ -136,7 +136,7 @@ bool WirelessInterface::isValid() const
 #ifdef USE_COREWLAN
     NSAutoreleasePool *autoreleasepool = [[NSAutoreleasePool alloc] init];
 
-    CWInterface *defaultInterface = [CWInterface interfaceWithName: qstringToNSString(d->interfaceName)];
+    CWInterface *defaultInterface = [CWInterface interfaceWithName:(NSString*)qstringToNSString(d->interfaceName)];
     if([defaultInterface power])
         valid = true;
 
@@ -151,7 +151,7 @@ WirelessStandards WirelessInterface::supportedStandards()
 #ifdef USE_COREWLAN
     NSAutoreleasePool *autoreleasepool = [[NSAutoreleasePool alloc] init];
 
-    CWInterface *currentInterface = [CWInterface interfaceWithName:qstringToNSString(d->interfaceName)];
+    CWInterface *currentInterface = [CWInterface interfaceWithName:(NSString*)qstringToNSString(d->interfaceName)];
     NSArray *phyModes = [currentInterface supportedPHYModes];
 
     for( id phyMode in phyModes )
