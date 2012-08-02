@@ -156,7 +156,9 @@ void TransferTester::downloadFinished()
     m_upload.setUrl(downloadReply->url());
     m_upload.setSize(data.size());
     m_time.start();
-    QNetworkReply *uploadReply = m_network->post(QNetworkRequest(m_upload.url()), data);
+    QNetworkRequest req(m_upload.url());
+    req.setRawHeader("Content-Type", "application/octet-stream");
+    QNetworkReply *uploadReply = m_network->post(req, data);
     connect(uploadReply, SIGNAL(finished()), this, SLOT(uploadFinished()));
 }
 
