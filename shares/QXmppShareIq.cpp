@@ -280,7 +280,7 @@ void QXmppShareItem::parse(const QDomElement &element)
         m_type = FileItem;
 
     m_date = QXmppUtils::datetimeFromString(element.attribute("date"));
-    m_hash = QByteArray::fromHex(element.attribute("hash").toAscii());
+    m_hash = QByteArray::fromHex(element.attribute("hash").toLatin1());
     m_name = element.attribute("name");
     m_popularity = element.attribute("popularity").toLongLong();
     m_size = element.attribute("size").toLongLong();
@@ -414,7 +414,7 @@ void QXmppShareSearchIq::parseElementFromChild(const QDomElement &element)
     // decompress query content
     if (!queryElement.text().isEmpty())
     {
-        const QByteArray data = qUncompress(QByteArray::fromBase64(queryElement.text().toAscii()));
+        const QByteArray data = qUncompress(QByteArray::fromBase64(queryElement.text().toLatin1()));
         QDomDocument doc;
         doc.setContent(data);
         m_collection.parse(doc.documentElement());
