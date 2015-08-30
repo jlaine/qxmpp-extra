@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.6)
+set(CMAKE_AUTOMOC ON)
 find_package(Qt4 REQUIRED)
 
 # Disable dependency on QtGui
@@ -45,12 +46,6 @@ set(SOURCES
     shares/QXmppShareIq.cpp
     shares/QXmppShareManager.cpp
     ${wireless_SOURCES})
-set(MOC_HEADERS
-    diagnostics/transfer.h
-    shares/QXmppShareDatabase.h
-    shares/QXmppShareDatabase_p.h
-    shares/QXmppShareManager.h)
 
-qt4_wrap_cpp(MOC_SOURCES ${MOC_HEADERS})
-add_library(qxmpp-extra STATIC ${SOURCES} ${MOC_SOURCES})
+add_library(qxmpp-extra STATIC ${SOURCES})
 target_link_libraries(qxmpp-extra ${QDJANGO_LIBRARIES} ${QXMPP_LIBRARIES} ${QT_LIBRARIES} ${WLAN_LIBRARIES})
