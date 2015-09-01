@@ -17,10 +17,10 @@ elseif(APPLE)
     set(wireless_SOURCES diagnostics/wireless_mac.mm)
 elseif(UNIX AND NOT QXMPP_DONT_USE_QTDBUS)
     set(wireless_SOURCES diagnostics/wireless_nm.cpp)
-    set(WLAN_LIBRARIES Qt4::QtDBus)
-else(WIN32)
+    set(WLAN_LIBRARIES Qt5::DBus)
+else()
     set(wireless_SOURCES diagnostics/wireless_stub.cpp)
-endif(WIN32)
+endif()
 
 set(SOURCES
     diagnostics/interface.cpp
