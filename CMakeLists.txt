@@ -29,10 +29,7 @@ set(SOURCES
     diagnostics/software.cpp
     diagnostics/transfer.cpp
     diagnostics/wireless.cpp
-    shares/QXmppShareDatabase.cpp
-    shares/QXmppShareIq.cpp
-    shares/QXmppShareManager.cpp
     ${wireless_SOURCES})
 
 add_library(qxmpp-extra STATIC ${SOURCES})
-target_link_libraries(qxmpp-extra ${QDJANGO_LIBRARIES} ${QXMPP_LIBRARIES} Qt4::QtNetwork Qt4::QtSql Qt4::QtXml ${WLAN_LIBRARIES})
+target_link_libraries(qxmpp-extra ${QXMPP_LIBRARIES} Qt5::Network Qt5::Xml ${WLAN_LIBRARIES})
